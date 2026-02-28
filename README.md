@@ -1,4 +1,4 @@
-# Quadratic‑Time
+<!-- # Quadratic‑Time
 
 **Explanation of Quadratic Time Complexity (O(n²))**
 
@@ -109,3 +109,154 @@ if __name__ == "__main__":
 ## 🧠 Why It Matters
 
 Quadratic algorithms are **simple to understand and implement**, and they can work well for small input sizes. However, as the size of the input grows, the performance **deteriorates quickly** because the number of operations increases much faster than linear or logarithmic algorithms.
+
+
+
+-->
+
+
+
+<!-- # 📘 Quadratic Time – README -->
+
+<h1 align="center"> Quadratic Time</h1>
+
+## Overview
+
+**Quadratic Time** refers to an algorithm whose runtime grows proportional to the square of the input size.
+
+If the input size doubles, the running time roughly quadruples.
+
+In algorithm analysis, this is expressed as:
+
+```
+O(n²)
+```
+
+Quadratic time is common in algorithms with nested loops over the input.
+
+<a href="/src/main.py">Check out for source code</a>
+
+---
+
+## ⚙️ What Quadratic Time Means
+
+An algorithm runs in quadratic time when it must perform a number of operations proportional to n × n, often because it compares every element with every other element.
+
+Common examples:
+
+* Bubble Sort
+* Selection Sort
+* Checking all pairs in an array
+* Brute-force algorithms
+
+For an input array of n elements, the algorithm performs approximately n² steps.
+
+---
+
+## 🧠 Python Examples
+
+### Example 1 — Bubble Sort
+
+```python id="bs2a0c"
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+
+numbers = [5, 3, 8, 4, 2]
+print(bubble_sort(numbers))
+```
+
+Nested loops → **O(n²)** time.
+
+---
+
+### Example 2 — Pair Sum Check
+
+```python id="ps9f2x"
+def has_pair_with_sum(arr, target):
+    for i in range(len(arr)):
+        for j in range(i + 1, len(arr)):
+            if arr[i] + arr[j] == target:
+                return True
+    return False
+
+
+arr = [1, 2, 3, 4, 5]
+print(has_pair_with_sum(arr, 9))  # True (4+5)
+```
+
+Every pair is checked → **O(n²)** time.
+
+---
+
+### Example 3 — Selection Sort
+
+```python id="ss5x8q"
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_index = i
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+    return arr
+
+
+numbers = [64, 25, 12, 22, 11]
+print(selection_sort(numbers))
+```
+
+Nested comparison loops → **O(n²)** time.
+
+---
+
+## ⏱️ Time Complexity Comparison
+
+| Complexity | Meaning           |
+| ---------- | ----------------- |
+| O(1)       | Constant time     |
+| O(n)       | Linear time       |
+| O(n log n) | Linearithmic time |
+| **O(n²)**  | Quadratic time    |
+| O(n³)      | Cubic time        |
+
+Quadratic algorithms become very slow as input size grows.
+
+---
+
+## 👍 Advantages
+
+* Simple and easy to implement
+* Works fine for small datasets
+* Conceptually intuitive for learning algorithms
+
+## 👎 Disadvantages
+
+* Very inefficient for large datasets
+* Performance grows rapidly as n increases
+* Often replaced by more efficient algorithms (O(n log n))
+
+---
+
+## 📌 When Quadratic Time Occurs
+
+Quadratic time operations typically appear in:
+
+* Nested loops iterating over arrays
+* Bubble Sort, Selection Sort, Insertion Sort (worst-case)
+* Brute-force pair checking
+* Comparing all items with each other
+
+---
+
+## 🏁 Summary
+
+Quadratic time complexity **O(n²)** occurs when an algorithm has nested iterations over the input.
+While acceptable for small inputs, it becomes impractical for large datasets, and more efficient algorithms are preferred.
+
